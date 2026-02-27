@@ -1,0 +1,38 @@
+[
+  {
+    "id": "c1",
+    "slug": "apparel",
+    "name_en": "Apparel",
+    "name_ar": "الملابس",
+    "image": "https://images.unsplash.com/photo-1445205170230-053b830c6050?auto=format&fit=crop&q=80&w=800",
+    "description_en": "Latest trends in fashion and comfortable everyday wear.",
+    "description_ar": "أحدث صيحات الموضة والملابس اليومية المريحة."
+  },
+  {
+    "id": "c2",
+    "slug": "electronics",
+    "name_en": "Electronics",
+    "name_ar": "الإلكترونيات",
+    "image": "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&q=80&w=800",
+    "description_en": "High-tech gadgets, accessories, and professional gear.",
+    "description_ar": "أجهزة تقنية عالية، إكسسوارات، ومعدات احترافية."
+  },
+  {
+    "id": "c3",
+    "slug": "footwear",
+    "name_en": "Footwear",
+    "name_ar": "الأحذية",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800",
+    "description_en": "Comfortable and stylish shoes for every occasion.",
+    "description_ar": "أحذية مريحة وأنيقة لكل المناسبات."
+  },
+  {
+    "id": "c4",
+    "slug": "accessories",
+    "name_en": "Accessories",
+    "name_ar": "الإكسسوارات",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800",
+    "description_en": "Complete your look with our premium collection of accessories.",
+    "description_ar": "أكمل مظهرك مع مجموعتنا المميزة من الإكسسوارات."
+  }
+]
