@@ -31,11 +31,12 @@ export default async function RootLayout({
   params,
 }: Readonly<Props>) {
   const { locale } = await params;
+  const dir = locale === "en" ? "ltr" : "rtl";
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
   return (
-    <html lang="en">
+    <html lang={locale} dir={dir}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
