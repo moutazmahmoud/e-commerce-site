@@ -1,14 +1,58 @@
 {
   "HomePage": {
     "home": "الصفحة الرئيسية",
-    "title": "مرحبا",
-    "description": "مرحبا في متجرنا الإلكتروني",
-    "button": "الانتقال إلى المتجر"
+    "badge": "وصولات جديدة كل أسبوع",
+    "titleLine1": "تسوق",
+    "titleLine2": "مستقبل الأناقة",
+    "description": "اكتشف مجموعات مختارة بعناية من الأزياء والإلكترونيات والأحذية والمزيد — كل ذلك في مكان واحد.",
+    "button": "تسوق الآن",
+    "browseCategories": "تصفح الفئات",
+    "stat1": "منتج",
+    "stat2": "علامة تجارية",
+    "stat3": "التقييم",
+    "categoriesTitle": "تسوق حسب الفئة",
+    "categoriesSubtitle": "استكشف مجموعاتنا المختارة بعناية",
+    "exploreAll": "استكشف جميع الفئات"
+  },
+  "CategoryPage": {
+    "sortLabel": "ترتيب حسب",
+    "sortDefault": "افتراضي",
+    "sortPriceAsc": "السعر: من الأقل إلى الأعلى",
+    "sortPriceDesc": "السعر: من الأعلى إلى الأقل",
+    "results": "منتج",
+    "outOfStock": "نفذ من المخزون",
+    "noProducts": "لا توجد منتجات في هذه الفئة."
   },
    "NotFoundPage": {
     "title": "404",
     "description": "الصفحة غير موجودة",
     "message": "عذرا، لم نتمكن من العثور على الصفحة التي تبحث عنها.",
     "backToHome": "العودة إلى الصفحة الرئيسية"
+  },
+  "Cart": {
+    "title": "سلة التسوق",
+    "empty": "سلتك فارغة",
+    "emptyDescription": "يبدو أنك لم تضف أي شيء بعد.",
+    "continueShopping": "مواصلة التسوق",
+    "addToCart": "أضف إلى السلة",
+    "outOfStock": "نفذ من المخزون",
+    "remove": "حذف",
+    "quantity": "الكمية",
+    "subtotal": "المجموع الفرعي",
+    "total": "الإجمالي",
+    "checkout": "المتابعة للدفع",
+    "items": "عناصر"
+  },
+  "Navigation": {
+    "home": "الصفحة الرئيسية",
+    "categories": "الفئات",
+    "products": "المنتجات",
+    "cart": "السلة",
+    "checkout": "الدفع",
+    "login": "تسجيل الدخول",
+    "register": "تسجيل",
+    "search": "بحث",
+    "account": "الحساب",
+    "logout": "تسجيل الخروج"
   }
 }

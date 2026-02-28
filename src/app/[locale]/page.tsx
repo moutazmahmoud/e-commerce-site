@@ -1,11 +1,11 @@
 import Hero from "@/components/Hero";
-import { useTranslations } from "next-intl";
+import FeaturedCategories from "@/components/FeaturedCategories";
 
 export default function Home() {
-  const t = useTranslations("HomePage");
   return (
-    <div className="">
+    <div>
       <Hero />
+      <FeaturedCategories />
     </div>
   );
 }
