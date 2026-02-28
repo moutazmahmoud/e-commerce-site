@@ -1,7 +1,16 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSelector";
-import CartIcon from "./CartIcon";
+
+
+import dynamic from 'next/dynamic';
+
+const CartIcon = dynamic(() => import('@/components/CartIcon'), { 
+  ssr: false,
+  loading: () => <div className="h-10 w-10" /> 
+});
 
 export default function Navbar() {
   const t = useTranslations("HomePage");

@@ -15,6 +15,8 @@ export default function Hero() {
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={75}
         />
         {/* Multi-layer gradient for depth */}
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent" />
