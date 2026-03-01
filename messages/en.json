@@ -54,5 +54,26 @@
     "search": "Search",
     "account": "Account",
     "logout": "Logout"
+  },
+  "Checkout": {
+    "title": "Checkout",
+    "shippingAddress": "Shipping Address",
+    "name": "Full Name",
+    "email": "Email Address",
+    "address": "Street Address",
+    "city": "City",
+    "zipCode": "ZIP / Postal Code",
+    "continue": "Continue to Review",
+    "reviewOrder": "Review Your Order",
+    "shippingDetails": "Shipping Details",
+    "placeOrder": "Place Order",
+    "successTitle": "Order Placed Successfully!",
+    "successMessage": "Thank you for your purchase. Your order has been placed and is being processed.",
+    "continueShopping": "Continue Shopping",
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "minLength": "Must be at least {min} characters"
+    }
   }
 }

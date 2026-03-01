@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
-import { Link } from "@/i18n/navigation";
 
 export default function Hero() {
   const t = useTranslations("HomePage");
@@ -51,12 +50,6 @@ export default function Hero() {
             <Button href="/products" variant="primary" size="lg">
               {t("button")}
             </Button>
-            <Link
-              href="/categories"
-              className="text-base font-semibold text-white/80 underline-offset-4 transition hover:text-white hover:underline"
-            >
-              {t("browseCategories")} →
-            </Link>
           </div>
 
           {/* Stats row */}

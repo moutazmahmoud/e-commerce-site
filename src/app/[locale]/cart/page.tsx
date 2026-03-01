@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useCartStore } from "@/store/cartStore";
 import Image from "next/image";
@@ -9,8 +10,22 @@ import { Link } from "@/i18n/navigation";
 export default function CartPage() {
   const t = useTranslations("Cart");
   const locale = useLocale();
+  const [mounted, setMounted] = useState(false);
   const { items, removeItem, updateQuantity, totalPrice, totalItems } =
     useCartStore();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="flex min-h-[70vh] flex-col items-center justify-center gap-6 px-4 text-center">
+        <div className="h-24 w-24 animate-pulse rounded-3xl bg-zinc-100 dark:bg-zinc-800" />
+        <div className="h-8 w-48 animate-pulse rounded bg-zinc-100 dark:bg-zinc-800" />
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (

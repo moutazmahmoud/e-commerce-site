@@ -54,5 +54,26 @@
     "search": "بحث",
     "account": "الحساب",
     "logout": "تسجيل الخروج"
+  },
+  "Checkout": {
+    "title": "الدفع",
+    "shippingAddress": "عنوان الشحن",
+    "name": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "address": "عنوان الشارع",
+    "city": "المدينة",
+    "zipCode": "الرمز البريدي",
+    "continue": "المتابعة للمراجعة",
+    "reviewOrder": "مراجعة طلبك",
+    "shippingDetails": "تفاصيل الشحن",
+    "placeOrder": "تأكيد الطلب",
+    "successTitle": "تم تأكيد الطلب بنجاح!",
+    "successMessage": "شكراً لشرائك. تم تأكيد طلبك وجاري معالجته.",
+    "continueShopping": "مواصلة التسوق",
+    "errors": {
+      "required": "هذا الحقل مطلوب",
+      "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+      "minLength": "يجب أن يكون على الأقل {min} أحرف"
+    }
   }
 }

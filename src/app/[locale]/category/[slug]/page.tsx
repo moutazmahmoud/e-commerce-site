@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations, getLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import categories from "@/data/categories.json";
 import products from "@/data/products.json";
@@ -42,12 +43,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // ─── Static paths ─────────────────────────────────────────────────────────────
 export function generateStaticParams() {
-  return categories.map((c) => ({ slug: c.slug }));
+  return routing.locales.flatMap((locale) =>
+    categories.map((c) => ({
+      locale,
+      slug: c.slug,
+    })),
+  );
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default async function CategoryPage({ params }: Props) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("CategoryPage");
 
   const category = categories.find((c) => c.slug === slug);

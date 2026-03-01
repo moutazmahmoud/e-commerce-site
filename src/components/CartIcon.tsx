@@ -1,12 +1,26 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { Link } from "@/i18n/navigation";
 
 export default function CartIcon() {
-  const totalItems = useCartStore((s) => s.totalItems);
-  const count = totalItems();
+  const [mounted, setMounted] = useState(false);
+  const items = useCartStore((s) => s.items);
+  const count = items.reduce((acc, item) => acc + item.quantity, 0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-800">
+        <ShoppingCart className="h-5 w-5" />
+      </div>
+    );
+  }
 
   return (
     <Link
