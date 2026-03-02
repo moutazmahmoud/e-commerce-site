@@ -12,6 +12,8 @@
     "stat3": "Rating",
     "categoriesTitle": "Shop by Category",
     "categoriesSubtitle": "Explore our handpicked collections",
+    "productsTitle": "Featured Products",
+    "productsSubtitle": "Our latest and most popular items",
     "exploreAll": "Explore all categories"
   },
   "CategoryPage": {

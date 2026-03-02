@@ -56,83 +56,85 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-1 md:gap-6">
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-semibold text-gray-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-
-              <div className="h-4 w-px bg-gray-200 dark:bg-zinc-800 mx-1" />
-
-              {isAuthenticated ? (
-                <div className="relative">
-                  <button
-                    onClick={() => setIsAccountOpen(!isAccountOpen)}
-                    className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/50 px-3 py-1.5 text-sm font-semibold hover:bg-gray-50 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:bg-zinc-800 transition-all shadow-sm"
+          <div className="flex items-center">
+            <div className="flex items-center gap-1 md:gap-6">
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex items-center gap-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-semibold text-gray-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors"
                   >
-                    <User className="h-4 w-4" />
-                    <span className="hidden sm:inline">{user?.name}</span>
-                  </button>
+                    {link.label}
+                  </Link>
+                ))}
 
-                  {isAccountOpen && (
-                    <div className="absolute end-0 mt-3 w-56 rounded-2xl border border-gray-100 bg-white p-1 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 animate-in fade-in zoom-in-95 duration-200">
-                      <div className="px-4 py-3 border-b border-gray-50 dark:border-zinc-900">
-                        <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider">
-                          {user?.email}
-                        </p>
+                <div className="h-4 w-px bg-gray-200 dark:bg-zinc-800 mx-1" />
+
+                {isAuthenticated ? (
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsAccountOpen(!isAccountOpen)}
+                      className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/50 px-3 py-1.5 text-sm font-semibold hover:bg-gray-50 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:bg-zinc-800 transition-all shadow-sm"
+                    >
+                      <User className="h-4 w-4" />
+                      <span className="hidden sm:inline">{user?.name}</span>
+                    </button>
+
+                    {isAccountOpen && (
+                      <div className="absolute end-0 mt-3 w-56 rounded-2xl border border-gray-100 bg-white p-1 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 animate-in fade-in zoom-in-95 duration-200">
+                        <div className="px-4 py-3 border-b border-gray-50 dark:border-zinc-900">
+                          <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider">
+                            {user?.email}
+                          </p>
+                        </div>
+                        <button
+                          onClick={handleLogout}
+                          className="flex w-full items-center gap-3 px-4 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors mt-1"
+                        >
+                          <LogOut className="h-4 w-4" />
+                          {tNav("logout")}
+                        </button>
                       </div>
-                      <button
-                        onClick={handleLogout}
-                        className="flex w-full items-center gap-3 px-4 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors mt-1"
-                      >
-                        <LogOut className="h-4 w-4" />
-                        {tNav("logout")}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <Link
-                    href="/login"
-                    className="text-sm font-semibold text-gray-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors px-2"
-                  >
-                    {tNav("login")}
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:scale-[1.02] active:scale-95"
-                  >
-                    {tNav("register")}
-                  </Link>
-                </div>
-              )}
-            </nav>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href="/login"
+                      className="text-sm font-semibold text-gray-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors px-2"
+                    >
+                      {tNav("login")}
+                    </Link>
+                    <Link
+                      href="/signup"
+                      className="rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:scale-[1.02] active:scale-95"
+                    >
+                      {tNav("register")}
+                    </Link>
+                  </div>
+                )}
+              </nav>
 
-            <div className="flex items-center gap-2 pl-2 md:pl-0 md:border-none dark:border-zinc-800">
-              <LanguageSwitcher />
-              <CartIcon />
+              <div className="flex items-center gap-2 pl-2 md:pl-0 md:border-none dark:border-zinc-800">
+                <LanguageSwitcher />
+                <CartIcon />
+              </div>
             </div>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 -ms-2 flex items-center justify-center hover:bg-gray-100/50 dark:hover:bg-zinc-900/50 rounded-xl md:hidden transition-colors relative z-[100]"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-gray-900 dark:text-zinc-100" />
+              ) : (
+                <Menu className="h-6 w-6 text-gray-900 dark:text-zinc-100" />
+              )}
+            </button>
           </div>
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 -ms-2 flex items-center justify-center hover:bg-gray-100/50 dark:hover:bg-zinc-900/50 rounded-xl md:hidden transition-colors relative z-[100]"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-900 dark:text-zinc-100" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-900 dark:text-zinc-100" />
-            )}
-          </button>
         </div>
       </div>
 

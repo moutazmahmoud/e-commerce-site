@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import { CheckCircle } from "lucide-react";
 
 export default function CheckoutSuccess() {

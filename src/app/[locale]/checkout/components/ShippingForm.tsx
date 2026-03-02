@@ -7,7 +7,7 @@ import {
   getShippingSchema,
   type ShippingFormData,
 } from "@/lib/validations/checkout";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 
 interface ShippingFormProps {
   onSubmit: (data: ShippingFormData) => void;

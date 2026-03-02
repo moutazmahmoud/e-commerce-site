@@ -1,6 +1,6 @@
 import { Home, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 
 export default function NotFound() {
   const t = useTranslations("NotFoundPage");

@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import FeaturedCategories from "@/components/FeaturedCategories";
+import ProductGrid from "@/components/ProductGrid";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 
@@ -16,9 +17,10 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div>
+    <main>
       <Hero />
       <FeaturedCategories />
-    </div>
+      <ProductGrid />
+    </main>
   );
 }

@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { useCartStore } from "@/store/cartStore";
 import { type ShippingFormData } from "@/lib/validations/checkout";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 interface ReviewOrderProps {

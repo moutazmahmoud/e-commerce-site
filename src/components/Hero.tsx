@@ -1,69 +1,78 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
+import CategoryStack from "./CategoryStack";
 
 export default function Hero() {
   const t = useTranslations("HomePage");
   return (
-    <section className="relative min-h-[92vh] w-full overflow-hidden bg-zinc-950 text-white">
-      {/* Background image with gradient overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2000"
-          alt="Hero background"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          quality={75}
-        />
-        {/* Multi-layer gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/30" />
+    <section className="relative min-h-[85vh] w-full overflow-hidden bg-white dark:bg-zinc-950">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-[10%] -right-[10%] h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[120px]" />
+        <div className="absolute top-[40%] -left-[10%] h-[500px] w-[500px] rounded-full bg-indigo-600/10 blur-[100px]" />
       </div>
 
-      {/* Decorative accent glow */}
-      <div className="absolute left-1/4 top-1/3 z-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/20 blur-3xl" />
-
-      {/* Content */}
-      <div className="container relative z-10 mx-auto flex min-h-[92vh] items-center px-6">
-        <div className="max-w-2xl">
+      <div className="container relative z-10 mx-auto grid min-h-[85vh] grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
+        <div className="max-w-2xl py-12 lg:py-0">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
+          <div className="mb-8 inline-flex items-center gap-2 rounded-2xl border border-blue-100 bg-blue-50/50 px-4 py-2 text-sm font-bold text-blue-700 backdrop-blur-md dark:border-blue-900/30 dark:bg-blue-900/20 dark:text-blue-400">
+            <span className="flex h-2 w-2 rounded-full bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
             {t("badge")}
           </div>
 
-          <h1 className="text-5xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
             {t("titleLine1")}{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            <span className="block text-blue-600 dark:text-blue-500">
               {t("titleLine2")}
             </span>
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg text-zinc-300 sm:text-xl">
+          <p className="mt-8 max-w-lg text-lg font-medium leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-xl">
             {t("description")}
           </p>
 
           {/* CTA buttons */}
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button href="/products" variant="primary" size="lg">
+          <div className="mt-12 flex flex-wrap items-center gap-6">
+            <Button
+              href="/products"
+              variant="primary"
+              size="lg"
+              className="h-14 px-10 text-lg font-bold shadow-2xl shadow-blue-600/30 hover:scale-105 transition-transform"
+            >
               {t("button")}
+            </Button>
+            <Button
+              href="#categories"
+              variant="outline"
+              size="lg"
+              className="h-14 px-10 text-lg font-bold border-2"
+            >
+              {t("browseCategories")}
             </Button>
           </div>
 
           {/* Stats row */}
-          <div className="mt-16 flex flex-wrap gap-10">
+          <div className="mt-16 flex items-center gap-12 border-t border-zinc-100 pt-10 dark:border-zinc-800">
             {[
               { value: "10K+", label: t("stat1") },
               { value: "50+", label: t("stat2") },
               { value: "4.9★", label: t("stat3") },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-3xl font-black">{stat.value}</p>
-                <p className="mt-1 text-sm text-zinc-400">{stat.label}</p>
+                <p className="text-3xl font-black tracking-tight text-zinc-900 dark:text-white">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-sm font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                  {stat.label}
+                </p>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="relative hidden lg:block">
+          <div className="relative aspect-square w-full scale-110">
+            <CategoryStack />
           </div>
         </div>
       </div>
