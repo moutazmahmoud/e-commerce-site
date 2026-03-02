@@ -19,9 +19,9 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLanguage}
-      className="px-3 py-1 text-sm font-medium transition-colors hover:text-blue-600"
+      className="flex h-10 px-4 items-center justify-center rounded-full border border-gray-100 bg-white/50 text-xs font-bold uppercase tracking-widest text-gray-500 transition-all hover:bg-gray-100 hover:text-blue-600 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-blue-400 shadow-sm"
     >
-      {locale === "en" ? "العربية" : "English"}
+      {locale === "en" ? "Ar" : "En"}
     </button>
   );
 }

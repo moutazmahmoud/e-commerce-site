@@ -75,5 +75,31 @@
       "invalidEmail": "Please enter a valid email address",
       "minLength": "Must be at least {min} characters"
     }
+  },
+  "Auth": {
+    "login": {
+      "title": "Login to your account",
+      "subtitle": "Enter your credentials to access your account",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign up"
+    },
+    "signup": {
+      "title": "Create an account",
+      "subtitle": "Join us and start shopping",
+      "submit": "Create Account",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Login"
+    },
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    },
+    "validation": {
+      "passwordMatch": "Passwords do not match",
+      "passwordLength": "Password must be at least 6 characters"
+    }
   }
 }
