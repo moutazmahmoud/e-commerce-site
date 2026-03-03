@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -12,22 +13,27 @@ export default function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
   const { toggleItem, isInWishlist } = useWishlistStore();
   const locale = useLocale();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const name = locale === "ar" ? product.name_ar : product.name_en;
-  const isWishlisted = isInWishlist(product.id);
+  const isWishlisted = mounted && isInWishlist(product.id);
 
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
-      <Link
-        href={`/product/${product.id}`}
-        className="relative h-52 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800"
-      >
-        <Image
-          src={product.image}
-          alt={name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, 25vw"
-        />
+      <div className="relative h-52 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+        <Link href={`/product/${product.id}`} className="block h-full w-full">
+          <Image
+            src={product.image}
+            alt={name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, 25vw"
+          />
+        </Link>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -42,13 +48,13 @@ export default function ProductCard({ product }: { product: Product }) {
           <Heart className={`h-5 w-5 ${isWishlisted ? "fill-current" : ""}`} />
         </button>
         {!product.inStock && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50 pointer-events-none">
             <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-zinc-800">
               Out of stock
             </span>
           </div>
         )}
-      </Link>
+      </div>
       <div className="flex flex-1 flex-col p-4">
         <Link href={`/product/${product.id}`} className="flex-1">
           <h3 className="font-semibold leading-snug text-zinc-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">

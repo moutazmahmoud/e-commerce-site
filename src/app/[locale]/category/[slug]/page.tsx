@@ -78,9 +78,9 @@ export default async function CategoryPage({ params }: Props) {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-8">
+        <div className="absolute bottom-0 left-0 p-8 container mx-auto">
           <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">
-            {t("sortLabel") /* reuse label space for breadcrumb feel */}
+            
           </p>
           <h1 className="mt-1 text-4xl font-black text-white md:text-5xl">
             {name}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useWishlistStore } from "@/store/wishlistStore";
@@ -9,6 +10,29 @@ import { Heart, ArrowLeft, ShoppingBag } from "lucide-react";
 export default function WishlistPage() {
   const t = useTranslations("Wishlist");
   const { items } = useWishlistStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <main className="min-h-screen pb-20">
+        <div className="container mx-auto px-4 py-16 animate-pulse">
+          <div className="h-12 w-48 bg-zinc-200 dark:bg-zinc-800 rounded mb-8" />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="h-72 bg-zinc-100 dark:bg-zinc-900 rounded-2xl"
+              />
+            ))}
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   if (items.length === 0) {
     return (
@@ -49,11 +73,6 @@ export default function WishlistPage() {
               <h1 className="text-4xl font-black tracking-tight text-zinc-900 dark:text-white sm:text-5xl">
                 {t("title")}
               </h1>
-            </div>
-            <div className="rounded-2xl bg-white px-6 py-3 shadow-sm dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800">
-              <span className="text-lg font-bold text-zinc-900 dark:text-white">
-                {items.length} {t("items")}
-              </span>
             </div>
           </div>
         </div>

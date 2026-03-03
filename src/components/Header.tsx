@@ -16,14 +16,16 @@ const CartIcon = dynamic(() => import("@/components/CartIcon"), {
 });
 
 export default function Header() {
-  const t = useTranslations("HomePage");
   const tNav = useTranslations("Navigation");
   const { isAuthenticated, user, logout } = useAuthStore();
-  const wishlistItems = useWishlistStore((s) => s.items);
-  const totalWishlistItems = wishlistItems.length;
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -127,18 +129,6 @@ export default function Header() {
 
               <div className="flex items-center gap-2 pl-2 md:pl-0 md:border-none dark:border-zinc-800">
                 <LanguageSwitcher />
-                <Link
-                  href="/wishlist"
-                  className="group relative flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:bg-gray-100 dark:hover:bg-zinc-900"
-                  aria-label="Wishlist"
-                >
-                  <Heart className="h-5 w-5 text-gray-700 dark:text-zinc-300 transition-colors group-hover:text-red-500" />
-                  {totalWishlistItems > 0 && (
-                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-lg shadow-red-500/30">
-                      {totalWishlistItems}
-                    </span>
-                  )}
-                </Link>
                 <CartIcon />
               </div>
             </div>

@@ -127,7 +127,7 @@
     "title": "Contact Us",
     "subtitle": "We'd love to hear from you",
     "info": "Contact Information",
-    "address": "123 NextShop St, New York, NY 10001",
+    "address": "123 Cairo, Egypt",
     "phone": "+1 (555) 000-0000",
     "email": "support@NextShop.com",
     "form": {
@@ -162,5 +162,10 @@
     "emptyDescription": "Save your favorite items to find them later.",
     "continueShopping": "Continue Shopping",
     "items": "items"
+  },
+  "Categories": {
+    "title": "All Categories",
+    "subtitle": "Discover our diverse range of product collections",
+    "explore": "Explore"
   }
 }
