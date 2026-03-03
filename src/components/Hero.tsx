@@ -13,8 +13,8 @@ export default function Hero() {
         <div className="absolute top-[40%] -left-[10%] h-[500px] w-[500px] rounded-full bg-indigo-600/10 blur-[100px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto grid min-h-[85vh] grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
-        <div className="max-w-2xl py-12 lg:py-0">
+      <div className="container relative z-10 mx-auto grid min-h-[85vh] grid-cols-1 items-center lg:gap-12 gap-2 px-6 lg:grid-cols-2">
+        <div className="max-w-2xl py-6 lg:py-0">
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-2xl border border-blue-100 bg-blue-50/50 px-4 py-2 text-sm font-bold text-blue-700 backdrop-blur-md dark:border-blue-900/30 dark:bg-blue-900/20 dark:text-blue-400">
             <span className="flex h-2 w-2 rounded-full bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
@@ -28,12 +28,12 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="mt-8 max-w-lg text-lg font-medium leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-xl">
+          <p className="mt-4 lg:mt-8 max-w-lg text-lg font-medium leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-xl">
             {t("description")}
           </p>
 
           {/* CTA buttons */}
-          <div className="mt-12 flex flex-wrap items-center gap-6">
+          <div className="mt-6 lg:mt-12 flex flex-wrap items-center gap-6">
             <Button
               href="/products"
               variant="primary"

@@ -62,3 +62,7 @@ h6 {
   opacity: 1;
   transform: translateY(0);
 }
+
+.perspective-1000 {
+  perspective: 1000px;
+}
