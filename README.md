@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextShop 🚀
 
-## Getting Started
+NextShop is a premium, localized e-commerce mini-application built with high performance and accessibility in mind. It features a cinematic user experience, full multi-language support (English & Arabic), and professional-grade SEO implementation.
 
-First, run the development server:
+## 🛠️ Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework**: [Next.js 16.1.6](https://nextjs.org/) (App Router, Turbopack)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) (Persisted)
+- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/) (RTL Support)
+- **Forms & Validation**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Tradeoffs & Decisions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Zustand over Redux**: Chosen for its minimal boilerplate and ease of persistence in a containerized environment.
+- **Server Components by Default**: Leveraged Next.js App Router to reduce client-side JS and improve FCP (First Contentful Paint).
+- **Client-Side State for Logic**: Used `useWishlistStore` and `useCartStore` with `mounted` checks to prevent hydration mismatches while maintaining persistent user data.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18.17 or later
+- npm or yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
 
-## Deploy on Vercel
+   ```bash
+   git clone <repository-url>
+   cd NextCommerceMini
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Install dependencies:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+## 📈 SEO & Performance Checklist
+
+- [x] **Semantic HTML**: Proper use of `<header>`, `<main>`, `<footer>`, and heading hierarchy (`h1`-`h4`).
+- [x] **Localized Meta Tags**: Dynamic `title` and `description` for every page in English and Arabic.
+- [x] **Social Previews**: Full OpenGraph and Twitter card support.
+- [x] **Structured Data (JSON-LD)**:
+  - [x] `Product` schema for rich search results.
+  - [x] `BreadcrumbList` for enhanced site navigation in search engines.
+- [x] **Image Optimization**: Fully utilized `next/image` for lazy loading and modern formats.
+- [x] **RTL Support**: Native Arabic support with fluid layout transitions.
+- [x] **Performance**: Optimized for high Lighthouse scores using Turbopack and Server Components.
+- [x] **Mobile First**: 100% responsive design across all viewports.
+
+## ✨ Key Features
+
+- **Wishlist**: Save favorite products with persistent storage.
+- **Shopping Cart**: Real-time cart management with local persistence.
+- **Categories Gallery**: High-impact visual discovery of product collections.
+- **Localized UI**: Complete translation of every component and validation message.
+- **Interactive Checkouts**: Seamless and intuitive checkout flow.
+
+---
