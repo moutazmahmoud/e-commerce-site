@@ -32,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 25vw"
-            quality={80}
+            quality={70}
           />
         </Link>
         <button

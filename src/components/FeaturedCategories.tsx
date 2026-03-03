@@ -50,7 +50,7 @@ export default function FeaturedCategories() {
                       ? "(max-width: 640px) 100vw, 50vw"
                       : "(max-width: 640px) 100vw, 25vw"
                   }
-                  quality={80}
+                  quality={70}
                 />
 
                 {/* Gradient overlay */}

@@ -63,7 +63,7 @@ export default function CategoryStack() {
               fill
               className={`object-cover transition-transform duration-[2000ms] ${isActive ? "scale-110" : "scale-100"}`}
               priority
-              quality={80}
+              quality={70}
             />
             {/* Overlay for better text readability */}
             <div

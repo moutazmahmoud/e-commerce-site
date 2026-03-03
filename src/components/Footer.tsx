@@ -96,23 +96,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Newsletter */}
-          <div className="space-y-6">
-            <h3 className="text-sm font-black uppercase tracking-widest text-zinc-900 dark:text-white">
-              {t("newsletter")}
-            </h3>
-            <div className="relative group">
-              <input
-                type="email"
-                placeholder={t("newsletterPlaceholder")}
-                className="w-full rounded-2xl border-2 border-transparent bg-zinc-50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-blue-600 dark:bg-zinc-900 dark:focus:bg-zinc-950"
-              />
-              <button className="absolute right-2 top-2 h-10 w-10 flex items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:scale-105 active:scale-95 transition-transform">
-                <Send className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Bottom Bar */}
