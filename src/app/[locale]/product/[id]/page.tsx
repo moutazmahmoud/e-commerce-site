@@ -28,7 +28,14 @@ export async function generateMetadata({
     title: `${name} | Store`,
     description: description,
     openGraph: {
-      title: name,
+      title: `${name} | NextShop`,
+      description: description,
+      images: [product.image],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} | NextShop`,
       description: description,
       images: [product.image],
     },
@@ -62,17 +69,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
 
-  // SEO: JSON-LD Product Schema
-  const jsonLd = {
+  // SEO: JSON-LD Structured Data
+  const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: name,
     image: product.image,
     description: description,
     sku: product.id,
+    brand: {
+      "@type": "Brand",
+      name: "NextShop",
+    },
     offers: {
       "@type": "Offer",
-      url: `https://store.com/${locale}/product/${product.id}`,
+      url: `https://nextshop.com/${locale}/product/${product.id}`,
       priceCurrency: "USD",
       price: product.price,
       availability: product.inStock
@@ -81,11 +92,40 @@ export default async function ProductPage({ params }: ProductPageProps) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "ar" ? "الرئيسية" : "Home",
+        item: `https://nextshop.com/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: product.category,
+        item: `https://nextshop.com/${locale}/category/${product.category.toLowerCase()}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: name,
+        item: `https://nextshop.com/${locale}/product/${product.id}`,
+      },
+    ],
+  };
+
   return (
     <div className="container mx-auto px-4 py-12">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">

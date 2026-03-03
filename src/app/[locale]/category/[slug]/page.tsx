@@ -34,9 +34,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: `${name} | Store`,
+      title: `${name} | NextShop`,
       description,
       images: [{ url: category.image }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} | NextShop`,
+      description,
+      images: [category.image],
     },
   };
 }
@@ -66,8 +73,32 @@ export default async function CategoryPage({ params }: Props) {
 
   const filtered: Product[] = products.filter((p) => p.category === slug);
 
+  // SEO: JSON-LD Breadcrumb Schema
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "ar" ? "الرئيسية" : "Home",
+        item: `https://nextshop.com/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: name,
+        item: `https://nextshop.com/${locale}/category/${slug}`,
+      },
+    ],
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Category hero banner */}
       <div className="relative h-56 w-full overflow-hidden bg-zinc-900 md:h-72">
         <Image
@@ -79,9 +110,7 @@ export default async function CategoryPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 container mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">
-            
-          </p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-300"></p>
           <h1 className="mt-1 text-4xl font-black text-white md:text-5xl">
             {name}
           </h1>

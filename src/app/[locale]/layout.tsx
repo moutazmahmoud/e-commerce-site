@@ -18,10 +18,39 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "NextShop",
-  description: "NextShop - E-commerce website",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const messages = (await getMessages()) as any;
+  const t = messages.HomePage;
+
+  const title = "NextShop";
+  const description = t.description;
+
+  return {
+    title: {
+      default: title,
+      template: `%s | ${title}`,
+    },
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: `https://nextshop.com/${locale}`,
+      siteName: title,
+      locale: locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+    },
+  };
+}
 
 type Props = {
   children: React.ReactNode;
