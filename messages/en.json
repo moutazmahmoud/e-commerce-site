@@ -55,7 +55,10 @@
     "register": "Register",
     "search": "Search",
     "account": "Account",
-    "logout": "Logout"
+    "logout": "Logout",
+    "about": "About",
+    "contact": "Contact",
+    "wishlist": "Wishlist"
   },
   "Checkout": {
     "title": "Checkout",
@@ -103,5 +106,61 @@
       "passwordMatch": "Passwords do not match",
       "passwordLength": "Password must be at least 6 characters"
     }
+  },
+  "About": {
+    "title": "About Us",
+    "subtitle": "Redefining the Future of Style",
+    "description": "We believe that fashion and technology should go hand in hand. Our mission is to provide a curated selection of premium products that inspire confidence and empower your lifestyle.",
+    "ourStory": "Our Story",
+    "storyText": "Founded in 2026, NextShop has quickly grown from a small dream to a global destination for trendsetters and tech enthusiasts alike. We pride ourselves on our commitment to quality, innovation, and customer satisfaction.",
+    "values": {
+      "title": "Our Values",
+      "quality": "Quality First",
+      "qualityDesc": "We never compromise on the quality of our products.",
+      "innovation": "Innovation",
+      "innovationDesc": "Constantly pushing boundaries in style and tech.",
+      "customer": "Customer Obsessed",
+      "customerDesc": "Your satisfaction is our ultimate goal."
+    }
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you",
+    "info": "Contact Information",
+    "address": "123 NextShop St, New York, NY 10001",
+    "phone": "+1 (555) 000-0000",
+    "email": "support@NextShop.com",
+    "form": {
+      "title": "Send us a message",
+      "name": "Full Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "success": "Your message has been sent successfully!"
+    }
+  },
+  "Footer": {
+    "about": "About NextShop",
+    "aboutText": "Your premium destination for the latest in fashion and technology. We bring you the future of style, today.",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "newsletter": "Join our Newsletter",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "copyright": "© 2026 NextShop. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "shipping": "Shipping Info",
+      "returns": "Returns"
+    }
+  },
+  "Wishlist": {
+    "title": "Your Wishlist",
+    "empty": "Your wishlist is empty",
+    "emptyDescription": "Save your favorite items to find them later.",
+    "continueShopping": "Continue Shopping",
+    "items": "items"
   }
 }

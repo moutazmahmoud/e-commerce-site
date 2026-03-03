@@ -9,7 +9,6 @@ export default function CategoryStack() {
   const locale = useLocale();
   const [activeIndex, setActiveIndex] = useState(3); // Start with last one (Accessories)
 
-  // Use exactly 4 categories as requested
   const displayCategories = categories.slice(0, 4).map((cat, index) => ({
     src: cat.image,
     // Distribute rotations for 4 items
@@ -74,9 +73,6 @@ export default function CategoryStack() {
             <div
               className={`absolute bottom-8 left-8 transition-all duration-1000 transform ${isActive ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
             >
-              <p className="text-xs font-bold uppercase tracking-widest text-white/60 mb-1">
-                Explore Category
-              </p>
               <h3 className="text-2xl font-black text-white">{item.label}</h3>
             </div>
           </div>
@@ -84,7 +80,7 @@ export default function CategoryStack() {
       })}
 
       {/* Trust Badge stays on top */}
-      <div className="absolute -bottom-2 -left-2 z-[60] rounded-3xl bg-white/90 p-4 shadow-2xl backdrop-blur-xl dark:bg-zinc-900/90 border border-white/20 scale-90">
+      {/* <div className="absolute -bottom-2 -left-2 z-[60] rounded-3xl bg-white/90 p-4 shadow-2xl backdrop-blur-xl dark:bg-zinc-900/90 border border-white/20 scale-90">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/30">
             <span className="text-xl font-bold">✓</span>
@@ -98,7 +94,7 @@ export default function CategoryStack() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

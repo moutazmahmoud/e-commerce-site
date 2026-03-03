@@ -10,7 +10,8 @@ export default function FeaturedCategories() {
   const locale = useLocale();
 
   return (
-    <section className="bg-zinc-50 py-20 dark:bg-zinc-900" id="categories">
+    <section id="categories" className="py-20 bg-white dark:bg-zinc-950">
+      
       <div className="container mx-auto px-6">
         {/* Section header */}
         <div className="mb-12 text-center">

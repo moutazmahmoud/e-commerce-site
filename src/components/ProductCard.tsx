@@ -4,13 +4,16 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useCartStore } from "@/store/cartStore";
-import { ShoppingCart } from "lucide-react";
+import { useWishlistStore } from "@/store/wishlistStore";
+import { ShoppingCart, Heart } from "lucide-react";
 import type { Product } from "@/types/product";
 
 export default function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
+  const { toggleItem, isInWishlist } = useWishlistStore();
   const locale = useLocale();
   const name = locale === "ar" ? product.name_ar : product.name_en;
+  const isWishlisted = isInWishlist(product.id);
 
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
@@ -25,6 +28,19 @@ export default function ProductCard({ product }: { product: Product }) {
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, 25vw"
         />
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleItem(product);
+          }}
+          className={`absolute top-3 end-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur-sm transition-all hover:scale-110 active:scale-95 dark:bg-zinc-900/90 ${
+            isWishlisted ? "text-red-500" : "text-zinc-400 hover:text-red-500"
+          }`}
+          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        >
+          <Heart className={`h-5 w-5 ${isWishlisted ? "fill-current" : ""}`} />
+        </button>
         {!product.inStock && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/50">
             <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-zinc-800">

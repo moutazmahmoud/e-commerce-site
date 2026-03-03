@@ -53,7 +53,7 @@ export default function Hero() {
           </div>
 
           {/* Stats row */}
-          <div className="mt-16 flex items-center gap-12 border-t border-zinc-100 pt-10 dark:border-zinc-800">
+          {/* <div className="mt-16 flex items-center gap-12 border-t border-zinc-100 pt-10 dark:border-zinc-800">
             {[
               { value: "10K+", label: t("stat1") },
               { value: "50+", label: t("stat2") },
@@ -68,10 +68,10 @@ export default function Hero() {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
-        <div className="relative hidden lg:block">
-          <div className="relative aspect-square w-full scale-110">
+        <div className="relative  lg:block">
+          <div className="relative aspect-square w-full ">
             <CategoryStack />
           </div>
         </div>

@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import LanguageSwitcher from "./LanguageSelector";
 import { useAuthStore } from "@/store/authStore";
-import { LogOut, User, Menu, X } from "lucide-react";
+import { useWishlistStore } from "@/store/wishlistStore";
+import { LogOut, User, Menu, X, Heart } from "lucide-react";
 import { useState, useEffect } from "react";
 
 import dynamic from "next/dynamic";
@@ -14,10 +15,12 @@ const CartIcon = dynamic(() => import("@/components/CartIcon"), {
   loading: () => <div className="h-10 w-10" />,
 });
 
-export default function Navbar() {
+export default function Header() {
   const t = useTranslations("HomePage");
   const tNav = useTranslations("Navigation");
   const { isAuthenticated, user, logout } = useAuthStore();
+  const wishlistItems = useWishlistStore((s) => s.items);
+  const totalWishlistItems = wishlistItems.length;
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
@@ -41,7 +44,12 @@ export default function Navbar() {
     router.push("/");
   };
 
-  const navLinks = [{ href: "/", label: t("home") }];
+  const navLinks = [
+    { href: "/", label: tNav("home") },
+    { href: "/wishlist", label: tNav("wishlist") },
+    { href: "/about", label: tNav("about") },
+    { href: "/contact", label: tNav("contact") },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/70 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/70">
@@ -52,7 +60,7 @@ export default function Navbar() {
               href="/"
               className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
             >
-              Commerce
+              NextShop
             </Link>
           </div>
 
@@ -119,6 +127,18 @@ export default function Navbar() {
 
               <div className="flex items-center gap-2 pl-2 md:pl-0 md:border-none dark:border-zinc-800">
                 <LanguageSwitcher />
+                <Link
+                  href="/wishlist"
+                  className="group relative flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:bg-gray-100 dark:hover:bg-zinc-900"
+                  aria-label="Wishlist"
+                >
+                  <Heart className="h-5 w-5 text-gray-700 dark:text-zinc-300 transition-colors group-hover:text-red-500" />
+                  {totalWishlistItems > 0 && (
+                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-lg shadow-red-500/30">
+                      {totalWishlistItems}
+                    </span>
+                  )}
+                </Link>
                 <CartIcon />
               </div>
             </div>
