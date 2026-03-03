@@ -103,7 +103,7 @@ export default function Header() {
                     </button>
 
                     {isAccountOpen && (
-                      <div className="absolute end-0 mt-3 w-56 rounded-2xl border border-gray-100 bg-white p-1 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 animate-in fade-in zoom-in-95 duration-200">
+                      <div className="absolute end-0 mt-3 rounded-2xl border border-gray-100 bg-white p-1 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 animate-in fade-in zoom-in-95 duration-200">
                         <div className="px-4 py-3 border-b border-gray-50 dark:border-zinc-900">
                           <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider">
                             {user?.email}

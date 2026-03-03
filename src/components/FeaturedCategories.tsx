@@ -35,9 +35,8 @@ export default function FeaturedCategories() {
                 key={cat.id}
                 href={`/category/${cat.slug}`}
                 className={`group relative overflow-hidden rounded-3xl bg-zinc-200 dark:bg-zinc-800 ${
-                  isFirst ? "sm:col-span-2 sm:row-span-2" : ""
+                  isFirst ? "sm:col-span-2 sm:row-span-2 lg:min-h-[420px] min-h-[200px]" : " min-h-[200px] lg:min-h-[200px]"
                 }`}
-                style={{ minHeight: isFirst ? "420px" : "200px" }}
               >
                 {/* Image */}
                 <Image
@@ -60,14 +59,12 @@ export default function FeaturedCategories() {
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3
                     className={`font-black tracking-tight text-white ${
-                      isFirst ? "text-3xl" : "text-xl"
+                      isFirst ? "lg:text-3xl text-xl" : "lg:text-xl text-sm"
                     }`}
                   >
                     {name}
                   </h3>
-                  {isFirst && (
-                    <p className="mt-2 text-sm text-zinc-300">{description}</p>
-                  )}
+                    <p className={`mt-2 text-md text-zinc-300 ${isFirst ? "lg:block hidden" : "lg:hidden block"}`}>{description}</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-400 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 translate-y-2">
                     Shop now →
                   </span>

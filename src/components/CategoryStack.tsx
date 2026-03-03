@@ -12,7 +12,7 @@ export default function CategoryStack() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((current) => (current + 1) % categories.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -71,9 +71,6 @@ export default function CategoryStack() {
                 <h3 className="text-xl font-black text-white leading-tight">
                   {name}
                 </h3>
-                <p className="mt-1 text-[10px] font-bold text-blue-400 uppercase tracking-widest">
-                  Explore Collection
-                </p>
               </div>
             </div>
           );
