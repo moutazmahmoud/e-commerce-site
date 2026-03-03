@@ -7,6 +7,7 @@ import ProductCard from "@/components/ProductCard";
 import { Heart, ShieldCheck, Truck, RotateCcw } from "lucide-react";
 import { Metadata } from "next";
 import AddToCartButton from "@/components/AddToCartButton";
+import ToggleWishListButton from "@/components/ToggleWishListButton";
 
 interface ProductPageProps {
   params: Promise<{ id: string; locale: string }>;
@@ -169,9 +170,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                             <ShoppingCart className="h-6 w-6" />
                             Add to Cart
                         </button> */}
-            <button className="flex h-14 w-14 items-center justify-center rounded-full border border-zinc-200 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
-              <Heart className="h-6 w-6" />
-            </button>
+            <ToggleWishListButton product={product} />
           </div>
 
           {!product.inStock && (

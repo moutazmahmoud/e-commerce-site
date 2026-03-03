@@ -1,11 +1,19 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import LanguageSwitcher from "./LanguageSelector";
 import { useAuthStore } from "@/store/authStore";
 import { useWishlistStore } from "@/store/wishlistStore";
-import { LogOut, User, Menu, X, Heart } from "lucide-react";
+import {
+  LogOut,
+  User,
+  Menu,
+  X,
+  Heart,
+  ChevronDown,
+  ArrowRight,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 
 import dynamic from "next/dynamic";
@@ -17,9 +25,11 @@ const CartIcon = dynamic(() => import("@/components/CartIcon"), {
 
 export default function Header() {
   const tNav = useTranslations("Navigation");
+  const locale = useLocale();
   const { isAuthenticated, user, logout } = useAuthStore();
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileProfileOpen, setIsMobileProfileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
@@ -132,6 +142,7 @@ export default function Header() {
                 <CartIcon />
               </div>
             </div>
+            <div className="w-4"></div>
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -150,58 +161,96 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-0 z-[80] h-[100dvh] w-full bg-white/95 backdrop-blur-xl dark:bg-zinc-950/95 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
-          <nav className="flex flex-col p-6 pt-24 space-y-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-100 border-b border-gray-50 dark:border-zinc-900 pb-4"
-              >
-                {link.label}
-              </Link>
-            ))}
+        <div className="fixed inset-0 top-0 z-[80] h-[100dvh] w-full bg-white dark:bg-zinc-950 md:hidden animate-in fade-in slide-in-from-top-4 duration-300 overflow-y-auto">
+          <div className="flex flex-col p-6 pt-24 min-h-full">
+            {/* Main Navigation */}
+            <div className="space-y-1 mb-10">
+              <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-4 px-4">
+                {locale === "ar" ? "القائمة" : "Navigation"}
+              </p>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-between rounded-2xl px-4 py-4 text-2xl font-black text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all active:scale-[0.98]"
+                >
+                  {link.label}
+                  <ArrowRight className="h-5 w-5 text-zinc-300 rtl:rotate-180" />
+                </Link>
+              ))}
+            </div>
 
-            {isAuthenticated ? (
-              <div className="space-y-6 pt-4">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-3xl font-extrabold tracking-tight underline decoration-blue-500 underline-offset-4">
-                    {user?.name}
-                  </p>
-                  <p className="text-sm font-medium text-gray-500 dark:text-zinc-500">
-                    {user?.email}
-                  </p>
+            {/* Account / Auth Section */}
+            <div className="mt-auto pt-10 border-t border-zinc-100 dark:border-zinc-800">
+              {isAuthenticated ? (
+                <div className="space-y-4">
+                  <button
+                    onClick={() => setIsMobileProfileOpen(!isMobileProfileOpen)}
+                    className="flex w-full items-center justify-between rounded-[2rem] bg-zinc-50 p-4 dark:bg-zinc-900/50 transition-all active:scale-[0.98] border border-transparent hover:border-blue-500/20"
+                  >
+                    <div className="flex items-center gap-4 text-start">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/20">
+                        <User className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <p className="text-xl font-bold text-zinc-900 dark:text-white leading-none mb-1.5">
+                          {user?.name}
+                        </p>
+                        <p className="text-xs font-medium text-zinc-500">
+                          {user?.email}
+                        </p>
+                      </div>
+                    </div>
+                    <ChevronDown
+                      className={`h-5 w-5 text-zinc-400 transition-transform duration-500 ${isMobileProfileOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+
+                  {isMobileProfileOpen && (
+                    <div className="grid grid-cols-1 gap-2 p-1 animate-in slide-in-from-top-4 fade-in duration-300">
+                      <Link
+                        href="/wishlist"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-4 rounded-2xl px-4 py-3.5 font-bold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
+                      >
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-500 dark:bg-red-500/10">
+                          <Heart className="h-5 w-5" />
+                        </div>
+                        {tNav("wishlist")}
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-4 rounded-2xl px-4 py-3.5 font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                      >
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-500 dark:bg-red-500/10">
+                          <LogOut className="h-5 w-5" />
+                        </div>
+                        {tNav("logout")}
+                      </button>
+                    </div>
+                  )}
                 </div>
-                <button
-                  onClick={handleLogout}
-                  className="flex w-full items-center gap-3 text-xl font-bold text-red-600 pt-4"
-                >
-                  <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-2xl">
-                    <LogOut className="h-6 w-6" />
-                  </div>
-                  {tNav("logout")}
-                </button>
-              </div>
-            ) : (
-              <div className="flex flex-col space-y-4 pt-4">
-                <Link
-                  href="/login"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex h-16 items-center justify-center rounded-2xl border border-gray-200 px-4 text-xl font-bold text-gray-900 dark:border-zinc-800 dark:text-zinc-100 shadow-sm"
-                >
-                  {tNav("login")}
-                </Link>
-                <Link
-                  href="/signup"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex h-16 items-center justify-center rounded-2xl bg-blue-600 px-4 text-xl font-bold text-white shadow-xl shadow-blue-600/30 active:scale-95 transition-transform"
-                >
-                  {tNav("register")}
-                </Link>
-              </div>
-            )}
-          </nav>
+              ) : (
+                <div className="grid grid-cols-1 gap-4">
+                  <Link
+                    href="/login"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex h-16 items-center justify-center rounded-2xl border border-zinc-200 px-4 text-xl font-black text-zinc-900 dark:border-zinc-800 dark:text-zinc-100 shadow-sm transition-all active:scale-[0.98]"
+                  >
+                    {tNav("login")}
+                  </Link>
+                  <Link
+                    href="/signup"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex h-16 items-center justify-center rounded-2xl bg-blue-600 px-4 text-xl font-black text-white shadow-xl shadow-blue-600/30 transition-all active:scale-[0.98] hover:bg-blue-700"
+                  >
+                    {tNav("register")}
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </header>

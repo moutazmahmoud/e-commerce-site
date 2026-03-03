@@ -1,13 +1,34 @@
+"use client";
+
 import products from "@/data/products.json";
 import ProductCard from "./ProductCard";
 import { useTranslations } from "next-intl";
 import type { Product } from "@/types/product";
+import { useEffect } from "react";
 
 export default function ProductGrid() {
   const t = useTranslations("HomePage");
 
-  // Show first 8 products for the home page
-  const featuredProducts = (products as Product[]).slice(0, 8);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    const revealedElements = document.querySelectorAll(".reveal-item");
+    revealedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Show first 12 products for the home page
+  const featuredProducts = (products as Product[]).slice(0, 12);
 
   return (
     <section className="py-24 relative bg-background-muted overflow-hidden">
@@ -31,8 +52,14 @@ export default function ProductGrid() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {featuredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className="reveal reveal-item"
+              style={{ transitionDelay: `${(index % 4) * 100}ms` }}
+            >
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       </div>
