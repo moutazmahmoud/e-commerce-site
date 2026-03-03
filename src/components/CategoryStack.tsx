@@ -62,7 +62,8 @@ export default function CategoryStack() {
               alt={item.label}
               fill
               className={`object-cover transition-transform duration-[2000ms] ${isActive ? "scale-110" : "scale-100"}`}
-              priority={index === 3}
+              priority
+              quality={80}
             />
             {/* Overlay for better text readability */}
             <div

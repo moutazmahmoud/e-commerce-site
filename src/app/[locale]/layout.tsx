@@ -72,6 +72,9 @@ export default async function RootLayout({
   const dir = locale === "en" ? "ltr" : "rtl";
   return (
     <html lang={locale} dir={dir}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+      </head>
       <body
         className={`${outfit.variable} ${inter.variable} font-sans antialiased bg-background text-foreground`}
       >
