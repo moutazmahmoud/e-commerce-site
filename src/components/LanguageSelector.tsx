@@ -1,17 +1,26 @@
-"use client";
-
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
+import { useSettingsStore } from "@/store/settingsStore";
+import { useEffect } from "react";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
+  const { setLocale, locale: storedLocale } = useSettingsStore();
+
+  // Sync stored locale with current route locale on mount
+  useEffect(() => {
+    if (storedLocale !== locale) {
+      setLocale(locale);
+    }
+  }, [locale, storedLocale, setLocale]);
 
   const toggleLanguage = () => {
     const nextLocale = locale === "en" ? "ar" : "en";
+    setLocale(nextLocale);
     // @ts-ignore
     router.replace({ pathname, params }, { locale: nextLocale });
   };
