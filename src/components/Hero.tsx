@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
-import CategoryStack from "./CategoryStack";
+import CategoryStack from "./CategorySlider";
 
 export default function Hero() {
   const t = useTranslations("HomePage");

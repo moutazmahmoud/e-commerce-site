@@ -58,6 +58,7 @@ export default function CategoryStack() {
                 className={`object-cover transition-transform duration-[3000ms] ${isActive ? "scale-110" : "scale-100"}`}
                 priority={isActive}
                 quality={70}
+                fetchPriority="high"
               />
               {/* Premium Gradient Overlay */}
               <div
