@@ -59,12 +59,12 @@ export default function FeaturedCategories() {
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3
                     className={`font-black tracking-tight text-white ${
-                      isFirst ? "lg:text-3xl text-xl" : "lg:text-xl text-sm"
+                      isFirst ? "lg:text-3xl text-xl" : "lg:text-xl text-xl"
                     }`}
                   >
                     {name}
                   </h3>
-                    <p className={`mt-2 text-md text-zinc-300 ${isFirst ? "lg:block hidden" : "lg:hidden block"}`}>{description}</p>
+                    <p className={`mt-2 text-md text-zinc-300 ${isFirst ? "" : "block"}`}>{description}</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-400 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 translate-y-2">
                     Shop now →
                   </span>

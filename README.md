@@ -69,4 +69,17 @@ NextShop is a premium, localized e-commerce mini-application built with high per
 - **Localized UI**: Complete translation of every component and validation message.
 - **Interactive Checkouts**: Seamless and intuitive checkout flow.
 
----
+
+## 📊 Lighthouse Results
+We take performance seriously. Here are our latest Lighthouse scores for the mobile experience:
+| Category | Score |
+| :--- | :--- |
+| **Performance** | 79 |
+| **Accessibility** | 93 |
+| **Best Practices** | 100 |
+| **SEO** | 100 |
+
+![Lighthouse Desktop Results](/public/docs/screenshots/Screenshot-desktop.png)
+![Lighthouse Mobile Results](/public/docs/screenshots/Screenshot-mobile.png)
+> [!NOTE]
+> Performance scores are based on the latest build using Turbopack and Image Optimization.

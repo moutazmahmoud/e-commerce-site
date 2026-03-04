@@ -14,7 +14,7 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 mx-auto grid min-h-[85vh] grid-cols-1 items-center lg:gap-12 gap-2 px-6 lg:grid-cols-2">
-        <div className="max-w-2xl py-6 lg:py-0">
+        <div className="max-w-2xl pt-4 lg:py-0">
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-2xl border border-blue-100 bg-blue-50/50 px-4 py-2 text-sm font-bold text-blue-700 backdrop-blur-md dark:border-blue-900/30 dark:bg-blue-900/20 dark:text-blue-400">
             <span className="flex h-2 w-2 rounded-full bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
