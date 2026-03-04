@@ -74,9 +74,9 @@ NextShop is a premium, localized e-commerce mini-application built with high per
 We take performance seriously. Here are our latest Lighthouse scores for the mobile experience:
 | Category | Score |
 | :--- | :--- |
-| **Performance** | 79 |
-| **Accessibility** | 93 |
-| **Best Practices** | 100 |
+| **Performance** | 86 |
+| **Accessibility** | 94 |
+| **Best Practices** | 96 |
 | **SEO** | 100 |
 
 ![Lighthouse Desktop Results](/public/docs/screenshots/Screenshot-desktop.png)
