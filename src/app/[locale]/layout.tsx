@@ -74,6 +74,14 @@ export default async function RootLayout({
     <html lang={locale} dir={dir}>
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" />
+        <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+          (function () {
+              var script = document.createElement("script");
+              script.async = 1;
+              script.src = 'https://tpembars.com/NTE1MDcw.js?t=515070';
+              document.head.appendChild(script);
+          })();
+        </script>
       </head>
       <body
         className={`${outfit.variable} ${inter.variable} font-sans antialiased bg-background text-foreground`}
